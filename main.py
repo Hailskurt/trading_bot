@@ -1,21 +1,19 @@
 import ccxt
 import time
-import json
+import os
 
 binance = ccxt.binance()
 ftx = ccxt.ftx()
 
-with open('config.json', 'r', encoding='utf-8') as f:
-    config = json.load(f)
-
-ticker = config['ticker']
-min_spread = config['min_spread']
+ticker = os.getenv['TICKER', 'BTC/USD']
+min_spread = os.getenv['MIN_SPREAD', 10]
+delay = os.getenv['DELAY', 1]
 
 print(f'Ticker: {ticker},   min spread: {min_spread}')
 print()
 
 while True:
-    time.sleep(1)
+    time.sleep(delay)
     bid = binance.fetch_ticker(ticker)['bid']
     ask = ftx.fetch_ticker(ticker)['ask']
     if bid - ask >= min_spread:
