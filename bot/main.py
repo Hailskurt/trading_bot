@@ -6,8 +6,8 @@ binance = ccxt.binance()
 ftx = ccxt.ftx()
 
 ticker = os.getenv('TICKER', 'BTC/USDT')
-min_spread = os.getenv('MIN_SPREAD', 10)
-delay = os.getenv('DELAY', 1)
+min_spread = int(os.getenv('MIN_SPREAD', 10))
+delay = int(os.getenv('DELAY', 1))
 
 print(f'Ticker: {ticker},    min spread: {min_spread},   delay: {delay}s')
 print()

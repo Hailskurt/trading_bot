@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  trading_bot:
+    build: bot/
+    environment:
+      TICKER: 'BTC/USDT'
+      MIN_SPREAD: 5
+      DELAY: 1
+      
